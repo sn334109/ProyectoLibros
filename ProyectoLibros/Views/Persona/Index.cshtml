@@ -1,0 +1,22 @@
+﻿@using Dominio
+@model List<Persona>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Documento</th>
+            <th scope="col">Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (Persona unaPersona in Model)
+        {
+            <tr>
+                <td>@unaPersona.Cedula</td>
+                <td>@unaPersona.Nombre</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
