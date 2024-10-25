@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Desktop\EjercicioMVC.23.10.2024\EjercicioMVC.23.10.2024\Proyecto\Dominio\Dominio\Dominio.csproj" />
     <ProjectReference Include="..\Dominio\Dominio\Dominio.csproj" />
   </ItemGroup>
 
