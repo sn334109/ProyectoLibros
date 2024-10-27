@@ -24,5 +24,11 @@ namespace Dominio
 
         public DateTime Fecha { get => fecha; set => fecha = value; }
         public Libro LibroPrestado { get => libroPrestado; set => libroPrestado = value; }
+
+
+        public override string ToString()
+        {
+            return $"<td>{fecha}</td> <td>{libroPrestado.Nombre}</td>";
+        }
     }
 }

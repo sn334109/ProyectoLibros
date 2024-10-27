@@ -28,33 +28,33 @@ namespace Dominio
 
         private Sistema()
         {
-            PrecargaDePersonas();
             PrecargaDeLibros();
+            PrecargaDePersonas();
         }
 
 
         private void PrecargaDePersonas()
         {
-            AgregarPersona(new Persona("Juan Pérez", new DateTime(1985, 5, 23), "12345678"));
-            AgregarPersona(new Persona("María González", new DateTime(1992, 8, 12), "23456789"));
-            AgregarPersona(new Persona("Carlos Ramírez", new DateTime(1979, 11, 3), "34567890"));
-            AgregarPersona(new Persona("Ana Fernández", new DateTime(1987, 1, 14), "45678901"));
-            AgregarPersona(new Persona("Luis Martínez", new DateTime(1990, 4, 9), "56789012"));
-            AgregarPersona(new Persona("Sofía Torres", new DateTime(1983, 10, 25), "67890123"));
-            AgregarPersona(new Persona("Javier López", new DateTime(1975, 12, 30), "78901234"));
-            AgregarPersona(new Persona("Valeria Castillo", new DateTime(1989, 7, 18), "89012345"));
-            AgregarPersona(new Persona("Pedro Gutiérrez", new DateTime(1980, 6, 5), "90123456"));
-            AgregarPersona(new Persona("Camila Reyes", new DateTime(1991, 2, 20), "01234567"));
-            AgregarPersona(new Persona("Andrés García", new DateTime(1982, 9, 13), "13579246"));
-            AgregarPersona(new Persona("Laura Morales", new DateTime(1984, 3, 7), "24681357"));
-            AgregarPersona(new Persona("Diego Rojas", new DateTime(1978, 11, 23), "35792468"));
-            AgregarPersona(new Persona("Isabel Soto", new DateTime(1993, 5, 16), "46813579"));
-            AgregarPersona(new Persona("Fernando Álvarez", new DateTime(1986, 8, 28), "57924680"));
-            AgregarPersona(new Persona("Lucía Delgado", new DateTime(1981, 4, 11), "68035791"));
-            AgregarPersona(new Persona("Mateo Herrera", new DateTime(1995, 12, 6), "79146802"));
-            AgregarPersona(new Persona("Daniela Ortiz", new DateTime(1976, 7, 29), "80257913"));
-            AgregarPersona(new Persona("Sebastián Vargas", new DateTime(1988, 2, 2), "91368024"));
-            AgregarPersona(new Persona("Gabriela Muñoz", new DateTime(1994, 10, 17), "02479135"));
+            AgregarPersona(new Persona("Juan Pérez", new DateTime(1985, 5, 23), "12345678", CrearListaPrestamos()));
+            AgregarPersona(new Persona("María González", new DateTime(1992, 8, 12), "23456789", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Carlos Ramírez", new DateTime(1979, 11, 3), "34567890", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Ana Fernández", new DateTime(1987, 1, 14), "45678901", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Luis Martínez", new DateTime(1990, 4, 9), "56789012", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Sofía Torres", new DateTime(1983, 10, 25), "67890123", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Javier López", new DateTime(1975, 12, 30), "78901234", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Valeria Castillo", new DateTime(1989, 7, 18), "89012345", CrearListaPrestamos() ));
+            AgregarPersona(new Persona("Pedro Gutiérrez", new DateTime(1980, 6, 5), "90123456", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Camila Reyes", new DateTime(1991, 2, 20), "01234567", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Andrés García", new DateTime(1982, 9, 13), "13579246", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Laura Morales", new DateTime(1984, 3, 7), "24681357", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Diego Rojas", new DateTime(1978, 11, 23), "35792468", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Isabel Soto", new DateTime(1993, 5, 16), "46813579", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Fernando Álvarez", new DateTime(1986, 8, 28), "57924680", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Lucía Delgado", new DateTime(1981, 4, 11), "68035791", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Mateo Herrera", new DateTime(1995, 12, 6), "79146802", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Daniela Ortiz", new DateTime(1976, 7, 29), "80257913", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Sebastián Vargas", new DateTime(1988, 2, 2), "91368024", CrearListaPrestamos()));
+            AgregarPersona(new Persona("Gabriela Muñoz", new DateTime(1994, 10, 17), "02479135", CrearListaPrestamos()));
         }
 
         private void PrecargaDeLibros()
@@ -81,16 +81,19 @@ namespace Dominio
             AgregarLibro(new Libro("978-84-339-7342-0", "El ruido de las cosas al caer", "Juan Gabriel Vásquez"));
 
         }
+
+        private void PrecargaDePrestamos()
+        {
+
+        }
         #endregion
 
 
-        public List<Persona> ordenarPersonasAlfabeticamente() 
+        public List<Persona> ordenarPersonasAlfabeticamente()
         {
             personas.Sort();
             return personas;
-            //List<Persona> copia = personas;
-            //copia.Sort((x, y) => (x.Nombre.CompareTo(y.Nombre)));
-            //return copia;
+
         }
 
         public List<Libro> ordenarLibrosPorISBN()
@@ -151,5 +154,59 @@ namespace Dominio
                 throw ex;
             }
         }
+
+        public Persona? DevolverPersona(int id)
+        {
+            foreach (Persona unaP in personas)
+            {
+                if (unaP.Id == id) return unaP;
+            }
+            return null;
+        }
+        public List<Prestamo> DevolverPrestamosPersona(int id)
+        {
+            return DevolverPersona(id).Prestamos;
+        }
+
+
+
+        public Libro DevolverLibroPorId(int id)
+        {
+            foreach (Libro unLibro in libros)
+            {
+                if (unLibro.Id == id)
+                {
+                    return unLibro;
+                }
+            }
+            return null; 
+        }
+
+
+
+        //METODO PARA CREAR LISTAS DE prestamos
+        Random random = new Random();
+        public List<Prestamo> CrearListaPrestamos()
+        {
+            List<int> idUsados = new List<int>();
+            List<Prestamo> aux = new List<Prestamo>();
+
+            int contadorRandom = 0;
+
+            while (contadorRandom < 5)
+            {
+                int idAleatorio = random.Next(1, 19);
+                if (!idUsados.Contains(idAleatorio))
+                {
+                    idUsados.Add(idAleatorio);
+
+                    contadorRandom++;
+                    Prestamo nuevoPrestamo = new Prestamo(DateTime.Now.Date.AddDays(-idAleatorio), DevolverLibroPorId(idAleatorio)); 
+                    aux.Add(nuevoPrestamo);
+                }
+            }
+            return aux;
+        }
+
     }
 }

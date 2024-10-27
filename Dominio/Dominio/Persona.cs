@@ -14,20 +14,22 @@ namespace Dominio
         string nombre;
         DateTime fechaNacimiento;
         string cedula;
-        List<Prestamo> prestamos;
+        List<Prestamo> prestamos = new List<Prestamo>();
 
         public int Id { get => id; set => id = value; }
         public static int UltimoId { get => ultimoId; set => ultimoId = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public DateTime FechaNacimiento { get => fechaNacimiento; set => fechaNacimiento = value; }
         public string Cedula { get => cedula; set => cedula = value; }
+        public List<Prestamo> Prestamos { get => prestamos; set => prestamos = value; }
 
-        public Persona(string nombre, DateTime fechaNacimiento, string cedula)
+        public Persona(string nombre, DateTime fechaNacimiento, string cedula, List<Prestamo> librosPrestados)
         {
             this.id = ++ultimoId;
             this.nombre = nombre;
             this.fechaNacimiento = fechaNacimiento;
             this.cedula = cedula;
+            this.prestamos = librosPrestados;
         }
 
         public Persona() 

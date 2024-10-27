@@ -1,0 +1,24 @@
+﻿@using Dominio
+
+<table>
+
+    <thead>
+        <tr>
+            <th scope="col">Fecha</th>
+            <th></th>
+            <th scope="col">Nombre del libro prestado</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (Prestamo unPrestamo in ViewBag.Lista)
+        {
+            <tr>
+                <td>@Html.Raw(@unPrestamo.Fecha)</td>
+                <td>    </td>
+                <td>@Html.Raw(@unPrestamo.LibroPrestado.Nombre)</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

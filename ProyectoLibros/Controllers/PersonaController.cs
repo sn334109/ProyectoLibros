@@ -10,5 +10,11 @@ namespace ProyectoLibros.Controllers
         {
             return View(unS.ordenarPersonasAlfabeticamente());
         }
+
+        public IActionResult ListarPrestamosPersona(int id)
+        {
+            ViewBag.Lista = unS.DevolverPrestamosPersona(id);
+            return View();
+        }
     }
 }
