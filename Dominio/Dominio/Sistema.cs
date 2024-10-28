@@ -28,8 +28,8 @@ namespace Dominio
 
         private Sistema()
         {
-            PrecargaDePersonas();
             PrecargaDeLibros();
+            PrecargaDePersonas();
         }
 
 
@@ -163,6 +163,17 @@ namespace Dominio
             }
             return null;
         }
+
+        public string DevolverNombreDePersona(int id)
+        {
+            string nombreADevolver = "";
+            Persona? unaP = DevolverPersona(id);
+            if (unaP != null)
+            {
+                nombreADevolver = unaP.Nombre;
+            }
+            return nombreADevolver;
+        }
         public List<Prestamo> DevolverPrestamosPersona(int id)
         {
             return DevolverPersona(id).Prestamos;
@@ -195,7 +206,7 @@ namespace Dominio
 
             while (contadorRandom < 5)
             {
-                int idAleatorio = random.Next(1, 19);
+                int idAleatorio = random.Next(1, libros.Count +1);
                 if (!idUsados.Contains(idAleatorio))
                 {
                     idUsados.Add(idAleatorio);
