@@ -13,5 +13,30 @@ namespace ProyectoLibros.Controllers
         {
             return View(unS.ordenarLibrosPorISBN());
         }
+
+        public IActionResult AgregarLibro()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+
+        public IActionResult AgregarLibro(Libro unLi)
+        {
+            try
+            {
+                unS.AgregarLibro(unLi);
+                ViewBag.Mensaje = "Libro agregado con exito";
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.Error = ex.Message;
+            }
+            return View(unLi);
+        }
     }
 }
+
+

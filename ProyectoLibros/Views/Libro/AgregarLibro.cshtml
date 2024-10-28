@@ -1,0 +1,37 @@
+﻿@using Dominio
+@model Libro
+
+@{
+    string isbn ="";
+    string nombre = "";
+    string autor = "";
+}
+
+@if (ViewBag.Error != null)
+{
+    <h4 class="alert-danger">@ViewBag.Error</h4>
+}
+
+@if (ViewBag.Mensaje != null)
+{
+    <h4 class="alert-info">@ViewBag.Mensaje</h4>
+}
+
+
+
+@if (Model != null)
+{
+    isbn = Model.Isbn;
+    nombre = Model.Nombre;
+    autor = Model.Autor;
+}
+
+<form method="post">
+    <input type="text" name="isbn" placeholder="Ingrese el Isbn" value="@isbn" /> <br></br>
+    <input type="text" name="nombre" placeholder="Nombre del libro" value="@nombre" /> <br></br>
+    <input type="text" name="autor" placeholder="Autor del libro" value="@autor" /> <br></br>
+    
+    <input type="submit" value="Ingresar Libro" />
+
+</form>
+

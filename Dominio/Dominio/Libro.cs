@@ -34,7 +34,7 @@ namespace Dominio
 
         private void ValidarISBN() 
         {
-            if (isbn.Length < 10) 
+            if (isbn.Length < 8) 
                 throw new Exception("El codigo ISBN no tiene el largo adecuado (minimo 8 numeros)");
         }
 
