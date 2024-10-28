@@ -28,8 +28,8 @@ namespace Dominio
 
         private Sistema()
         {
-            PrecargaDeLibros();
             PrecargaDePersonas();
+            PrecargaDeLibros();
         }
 
 
